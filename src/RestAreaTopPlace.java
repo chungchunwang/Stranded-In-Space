@@ -48,7 +48,7 @@ public class RestAreaTopPlace extends TGE_Place {
             @Override
             public ArrayList<TGE_Action> run(HashMap<String, Integer> items, TGE_F_EndGame endGame) {
                 if(items.get("green key") != null && items.get("green key") > 0){ //requires a green key to open the coffee machine
-                    System.out.println("There is a secret compartment in the coffee machine. How weird?");
+                    System.out.println("There is a secret compartment in the coffee machine. How weird? You open it with your green key. ");
                     if(hasChargingAdaptor){
                         System.out.println("Inside the coffee machine you find a charging adaptor. You put it in your bag.");
                         items.merge("charging adaptor", 1, Integer::sum); //adds charging adaptor to items

@@ -159,7 +159,7 @@ public class TGE_Engine {
             System.out.println("You are at: " + place.name);
             System.out.print("Description: ");
             for (int i = 0; i< place.descriptions.size(); i++){
-                if(place.descriptions.get(i).command == "")
+                if(place.descriptions.get(i).command.equals(""))
                     place.descriptions.get(i).run(items, (int endScreen) -> {
                         clearConsole();
                         endScreens.get(endScreen).display();
@@ -182,6 +182,7 @@ public class TGE_Engine {
             System.out.print("Enter a command: ");
             //gets command
             String output = input.nextLine();
+            output = output.toLowerCase(); //not case-sensitive, change input to all lower case
 
             //Search actions for command
             boolean exitActionScreen = false; //whether to exit the action screen
@@ -222,6 +223,7 @@ public class TGE_Engine {
                             System.out.println("|---- Call an command from the list above or press Enter to exit this action. ----|");
                             System.out.print("Enter a command: ");
                             output = input.nextLine(); //store command in output
+                            output = output.toLowerCase(); //not case-sensitive, change input to all lower case
                             for (TGE_Action a : actions) { //loop through possible actions to find out is command is valid
                                 if (a.command.equals(output)) validInput = true;
                             }
@@ -255,7 +257,7 @@ public class TGE_Engine {
                             System.exit(1);
                         });
                         System.out.println("|######################## Press Enter to exit this description. #########################|");
-                        output = input.nextLine();
+                        input.nextLine();
                         break;
                     }
                 }
@@ -348,7 +350,7 @@ public class TGE_Engine {
      * Prints the help menu of the game.
      */
     private void printHelp(){
-        System.out.println("Interact with the game by typing commands into the console! View below for a list of commands you can use.");
+        System.out.println("Interact with the game by typing commands into the console! Note that they are not case-sensitive. View below for a list of commands you can use.");
         System.out.println("Additionally, particular places in the map may also have special commands you can perform, called actions. Instructions for them will be displayed whenever you enter such a place.");
         System.out.println("Commands:");
         System.out.println("Command         |Description");
